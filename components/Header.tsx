@@ -39,14 +39,26 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-           {/* Fallback to text if image fails or isn't present, but using img tag as requested */}
+        <a href="#home" className="flex items-center gap-3 group" aria-label="Zeldic Home">
+           {/* 
+             INSTRUCTIONS: 
+             Upload your logo file as "logo.png" to the project root. 
+             If the file is missing, this image tag will hide itself.
+           */}
+           <img 
+             src="logo.png" 
+             alt="Zeldic Logo" 
+             className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+             onError={(e) => {
+               (e.target as HTMLImageElement).style.display = 'none';
+             }}
+           />
            <div className="flex items-center gap-2 font-bold text-2xl tracking-tighter">
              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">
                ZELDIC
              </span>
            </div>
-        </div>
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">

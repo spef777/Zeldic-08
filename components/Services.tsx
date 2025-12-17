@@ -10,6 +10,7 @@ import {
   BarChart2 
 } from 'lucide-react';
 import { ServiceItem } from '../types';
+import ScrollReveal from './ScrollReveal';
 
 const servicesList: ServiceItem[] = [
   {
@@ -58,23 +59,31 @@ const Services: React.FC = () => {
   return (
     <section id="services" className="py-24 relative">
        <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-fuchsia-400 tracking-widest uppercase mb-3">What We Do</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white">Our Expertise</h3>
-        </div>
+        <ScrollReveal direction="up" duration={0.8}>
+          <div className="text-center mb-16">
+            <h2 className="text-sm font-bold text-fuchsia-400 tracking-widest uppercase mb-3">What We Do</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white">Our Expertise</h3>
+          </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicesList.map((service, index) => (
-            <div 
-              key={index}
-              className="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all hover:-translate-y-2 duration-300 group cursor-default"
+            <ScrollReveal 
+              key={index} 
+              direction="up" 
+              delay={index * 0.1} 
+              className="h-full"
             >
-              <div className="w-14 h-14 rounded-xl bg-violet-600/20 flex items-center justify-center text-violet-300 mb-6 group-hover:bg-violet-600 group-hover:text-white transition-colors">
-                {service.icon}
+              <div 
+                className="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all hover:-translate-y-2 duration-300 group cursor-default h-full border border-white/5 hover:border-violet-500/30"
+              >
+                <div className="w-14 h-14 rounded-xl bg-violet-600/20 flex items-center justify-center text-violet-300 mb-6 group-hover:bg-violet-600 group-hover:text-white transition-colors duration-300">
+                  {service.icon}
+                </div>
+                <h4 className="text-xl font-bold mb-3 text-white group-hover:text-violet-200 transition-colors">{service.title}</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
               </div>
-              <h4 className="text-xl font-bold mb-3 text-white">{service.title}</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
        </div>

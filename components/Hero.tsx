@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 interface AnimatedTextProps {
@@ -34,9 +34,61 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = "", delay
   );
 };
 
+const SnowEffect: React.FC = () => {
+  const flakes = useMemo(() => {
+    return Array.from({ length: 60 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      animationDelay: Math.random() * 20,
+      animationDuration: 10 + Math.random() * 15,
+      opacity: 0.1 + Math.random() * 0.4,
+      size: 2 + Math.random() * 3,
+    }));
+  }, []);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]" aria-hidden="true">
+      {flakes.map((flake) => (
+        <div
+          key={flake.id}
+          className="absolute bg-white rounded-full blur-[0.5px]"
+          style={{
+            left: `${flake.left}%`,
+            top: `-20px`,
+            width: `${flake.size}px`,
+            height: `${flake.size}px`,
+            opacity: flake.opacity,
+            animation: `fall ${flake.animationDuration}s linear infinite`,
+            animationDelay: `-${flake.animationDelay}s`,
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes fall {
+          0% {
+            transform: translateY(-20px) translateX(0px);
+          }
+          25% {
+            transform: translateY(30vh) translateX(15px);
+          }
+          50% {
+            transform: translateY(60vh) translateX(-15px);
+          }
+          75% {
+            transform: translateY(80vh) translateX(15px);
+          }
+          100% {
+            transform: translateY(110vh) translateX(0px);
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center relative px-6 text-center pt-20">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center relative px-6 text-center pt-20 overflow-hidden">
       <style>{`
         @keyframes heroFadeInUp {
           to {
@@ -46,8 +98,11 @@ const Hero: React.FC = () => {
         }
       `}</style>
 
+      {/* Snow Effect - Hero Only */}
+      <SnowEffect />
+
       {/* Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-violet-600/10 blur-[100px] rounded-full"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-violet-600/10 blur-[100px] rounded-full z-0"></div>
 
       <div className="relative z-10 max-w-4xl mx-auto space-y-8">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
@@ -85,12 +140,6 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-white rounded-full animate-pulse"></div>
-        </div>
-      </div>
     </section>
   );
 };
