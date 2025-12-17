@@ -33,14 +33,14 @@ const About: React.FC = () => {
                <div className="aspect-square rounded-2xl bg-gradient-to-br from-violet-900/50 to-fuchsia-900/50 border border-white/10 p-2 flex items-center justify-center">
                   <div className="w-full h-full rounded-xl overflow-hidden relative group">
                     <img 
-                      src="https://picsum.photos/800/800?grayscale" 
+                      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                       alt="Agency Workflow" 
-                      className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover opacity-60 grayscale group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
                        <div className="text-white">
-                         <div className="text-4xl font-bold text-violet-400 mb-1">5+</div>
-                         <div className="text-sm uppercase tracking-wide">Years of Excellence</div>
+                         <div className="text-3xl md:text-4xl font-bold text-violet-400 mb-1">Trusted</div>
+                         <div className="text-sm uppercase tracking-wide">Growth Partner</div>
                        </div>
                     </div>
                   </div>
