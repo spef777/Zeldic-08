@@ -36,10 +36,18 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = "", delay
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center relative px-6 text-center pt-20 overflow-hidden">
-      
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center relative px-6 text-center pt-20">
+      <style>{`
+        @keyframes heroFadeInUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+
       {/* Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-violet-600/10 blur-[100px] rounded-full z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-violet-600/10 blur-[100px] rounded-full"></div>
 
       <div className="relative z-10 max-w-4xl mx-auto space-y-8">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">

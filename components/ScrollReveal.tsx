@@ -58,7 +58,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   return (
     <div
       ref={ref}
-      className={`${className} transition-all ${getTransformClass()} ${fullWidth ? 'w-full' : ''}`}
+      className={`${className} transition-all cubic-bezier(0.17, 0.55, 0.55, 1) ${getTransformClass()} ${fullWidth ? 'w-full' : ''}`}
       style={{ 
         transitionDuration: `${duration}s`,
         transitionDelay: `${delay}s`,
