@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-black text-white overflow-x-hidden;
     font-family: 'Inter', sans-serif;
+    min-height: 100vh;
   }
 }
 
@@ -52,4 +56,23 @@
   border-color: rgba(139, 92, 246, 0.5);
   background: rgba(255, 255, 255, 0.05);
   outline: none;
+}
+
+/* Global Keyframes for complex animations */
+@keyframes heroFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

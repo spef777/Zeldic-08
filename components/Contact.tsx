@@ -3,6 +3,12 @@ import { Phone, Mail, Globe, Instagram, Facebook, MessageCircle, Send } from 'lu
 import ScrollReveal from './ScrollReveal';
 
 const Contact: React.FC = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Logic to handle form submission would go here
+    alert("Thank you for your message! We will get back to you soon.");
+  };
+
   return (
     <section id="contact" className="py-24 relative scroll-mt-20">
       <div className="container mx-auto px-6">
@@ -60,15 +66,15 @@ const Contact: React.FC = () => {
 
               {/* Minimal Form (Right) */}
               <div className="flex flex-col justify-center">
-                 <form className="space-y-4">
+                 <form className="space-y-4" onSubmit={handleSubmit}>
                    <div className="grid grid-cols-2 gap-4">
                      <div className="space-y-2">
                        <label className="text-sm text-gray-400 ml-1">Name</label>
-                       <input type="text" className="w-full px-4 py-3 rounded-xl input-glass text-white placeholder-gray-500 transition-all" placeholder="John Doe" />
+                       <input type="text" className="w-full px-4 py-3 rounded-xl input-glass text-white placeholder-gray-500 transition-all" placeholder="John Doe" required />
                      </div>
                      <div className="space-y-2">
                        <label className="text-sm text-gray-400 ml-1">Email</label>
-                       <input type="email" className="w-full px-4 py-3 rounded-xl input-glass text-white placeholder-gray-500 transition-all" placeholder="john@example.com" />
+                       <input type="email" className="w-full px-4 py-3 rounded-xl input-glass text-white placeholder-gray-500 transition-all" placeholder="john@example.com" required />
                      </div>
                    </div>
                    
@@ -85,7 +91,7 @@ const Contact: React.FC = () => {
 
                    <div className="space-y-2">
                      <label className="text-sm text-gray-400 ml-1">Message</label>
-                     <textarea rows={4} className="w-full px-4 py-3 rounded-xl input-glass text-white placeholder-gray-500 transition-all resize-none" placeholder="Tell us about your project..."></textarea>
+                     <textarea rows={4} className="w-full px-4 py-3 rounded-xl input-glass text-white placeholder-gray-500 transition-all resize-none" placeholder="Tell us about your project..." required></textarea>
                    </div>
 
                    <button type="submit" className="w-full py-4 bg-white hover:bg-gray-200 text-black font-bold rounded-xl transition-all flex items-center justify-center gap-2 mt-4">

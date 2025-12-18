@@ -11,6 +11,7 @@ export default {
       },
       animation: {
         'fade-in-down': 'fadeInDown 0.3s ease-out forwards',
+        'hero-fade-in-up': 'heroFadeInUp 0.6s cubic-bezier(0.2, 0.65, 0.3, 0.9) forwards',
       },
       keyframes: {
         fadeInDown: {
